@@ -62,7 +62,7 @@ public class RSSFeedParser {
                             if (isFeedHeader) {
                                 isFeedHeader = false;
                                 feed = new Feed(title, link, description, language,
-                                        copyright, pubdate);
+                                        copyright, pubdate, guid);
                             }
                             event = eventReader.nextEvent();
                             break;

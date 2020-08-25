@@ -1,11 +1,18 @@
 package com.example.demo;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "rss")
 public class FeedMessage {
 
     String title;
     String description;
     String link;
     String author;
+    @Id
     String guid;
 
     public String getTitle() {

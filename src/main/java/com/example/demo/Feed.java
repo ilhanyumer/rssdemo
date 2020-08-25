@@ -10,17 +10,19 @@ public class Feed {
     final String language;
     final String copyright;
     final String pubDate;
+    final String guid;
 
     final List<FeedMessage> entries = new ArrayList<FeedMessage>();
 
     public Feed(String title, String link, String description, String language,
-                String copyright, String pubDate) {
+                String copyright, String pubDate, String guid) {
         this.title = title;
         this.link = link;
         this.description = description;
         this.language = language;
         this.copyright = copyright;
         this.pubDate = pubDate;
+        this.guid = guid;
     }
 
     public List<FeedMessage> getMessages() {
@@ -51,10 +53,14 @@ public class Feed {
         return pubDate;
     }
 
+    public String getGuid() {return guid; }
+
+
     @Override
     public String toString() {
         return "Feed [copyright=" + copyright + ", description=" + description
                 + ", language=" + language + ", link=" + link + ", pubDate="
                 + pubDate + ", title=" + title + "]";
     }
+
 }
