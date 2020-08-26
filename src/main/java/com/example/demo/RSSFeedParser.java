@@ -10,6 +10,8 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import static javax.xml.stream.XMLInputFactory.IS_COALESCING;
+
 public class RSSFeedParser {
     static final String TITLE = "title";
     static final String DESCRIPTION = "description";
@@ -36,7 +38,7 @@ public class RSSFeedParser {
         Feed feed = null;
         try {
             boolean isFeedHeader = true;
-            // Set header values intial to the empty string
+
             String description = "";
             String title = "";
             String link = "";
@@ -46,12 +48,12 @@ public class RSSFeedParser {
             String pubdate = "";
             String guid = "";
 
-            // First create a new XMLInputFactory
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-            // Setup a new eventReader
+            inputFactory.setProperty(IS_COALESCING,true);
+
             InputStream in = read();
             XMLEventReader eventReader = inputFactory.createXMLEventReader(in);
-            // read the XML document
+
             while (eventReader.hasNext()) {
                 XMLEvent event = eventReader.nextEvent();
                 if (event.isStartElement()) {

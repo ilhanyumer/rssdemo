@@ -30,11 +30,12 @@ public class NewsService implements INewsService {
 
     @Override
     public FeedMessage create(FeedMessage feedMessage) {
-        String INSERT_SQL = "MERGE INTO rss(guid, link, title) values(:guid, :link, :title)";
+        String INSERT_SQL = "MERGE INTO rss(guid, link, title, description) values(:guid, :link, :title, :description)";
         KeyHolder holder = new GeneratedKeyHolder();
         SqlParameterSource parameters = new MapSqlParameterSource()
                 .addValue("guid", feedMessage.getGuid())
                 .addValue("link", feedMessage.getLink())
+                .addValue("description", feedMessage.getDescription())
                 .addValue("title", feedMessage.getTitle());
         namedParameterJdbcTemplate.update(INSERT_SQL, parameters);
         return feedMessage;
