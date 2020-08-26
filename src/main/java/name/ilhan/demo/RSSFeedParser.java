@@ -45,7 +45,7 @@ public class RSSFeedParser {
             String language = "";
             String copyright = "";
             String author = "";
-            String pubdate = "";
+            String pubDate = "";
             String guid = "";
 
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
@@ -64,7 +64,7 @@ public class RSSFeedParser {
                             if (isFeedHeader) {
                                 isFeedHeader = false;
                                 feed = new Feed(title, link, description, language,
-                                        copyright, pubdate, guid);
+                                        copyright, pubDate, guid);
                             }
                             event = eventReader.nextEvent();
                             break;
@@ -87,7 +87,7 @@ public class RSSFeedParser {
                             author = getCharacterData(event, eventReader);
                             break;
                         case PUB_DATE:
-                            pubdate = getCharacterData(event, eventReader);
+                            pubDate = getCharacterData(event, eventReader);
                             break;
                         case COPYRIGHT:
                             copyright = getCharacterData(event, eventReader);
@@ -101,6 +101,7 @@ public class RSSFeedParser {
                         message.setGuid(guid);
                         message.setLink(link);
                         message.setTitle(title);
+                        message.setPubDate(pubDate);
                         feed.getMessages().add(message);
                         event = eventReader.nextEvent();
                         continue;

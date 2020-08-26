@@ -1,5 +1,6 @@
 package name.ilhan.demo;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,6 +11,9 @@ public class FeedMessage {
 
     String title;
     String description;
+
+    @Column(name = "pub_date")
+    String pubDate;
     String link;
     String author;
     @Id
@@ -55,10 +59,23 @@ public class FeedMessage {
         this.guid = guid;
     }
 
+    public String getPubDate() {
+        return pubDate;
+    }
+
+    public void setPubDate(String pubDate) {
+        this.pubDate = pubDate;
+    }
+
     @Override
     public String toString() {
-        return "FeedMessage [title=" + title + ", description=" + description
-                + ", link=" + link + ", author=" + author + ", guid=" + guid
-                + "]";
+        return "FeedMessage{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", pubDate='" + pubDate + '\'' +
+                ", link='" + link + '\'' +
+                ", author='" + author + '\'' +
+                ", guid='" + guid + '\'' +
+                '}';
     }
 }
