@@ -12,7 +12,7 @@ public class MyController {
     @Autowired
     private CityService cityService;
 
-    @RequestMapping("/cities")
+    @RequestMapping("/news")
     public List<FeedMessage> findCities() {
 
         return cityService.findAll();
