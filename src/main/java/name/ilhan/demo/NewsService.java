@@ -1,4 +1,4 @@
-package com.example.demo;
+package name.ilhan.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;

@@ -1,4 +1,4 @@
-package com.example.demo;
+package name.ilhan.demo;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.demo;
+package name.ilhan.demo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

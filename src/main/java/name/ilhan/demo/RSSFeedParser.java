@@ -1,4 +1,4 @@
-package com.example.demo;
+package name.ilhan.demo;
 
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
