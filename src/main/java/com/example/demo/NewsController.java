@@ -10,12 +10,12 @@ import java.util.List;
 public class NewsController {
 
     @Autowired
-    private CityService cityService;
+    private NewsService newsService;
 
     @RequestMapping("/news")
     public List<FeedMessage> findCities() {
 
-        return cityService.findAll();
+        return newsService.findAll();
     }
 
 }

@@ -16,7 +16,7 @@ public class ScheduledTasks {
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
     @Autowired
-    private CityService cityService;
+    private NewsService newsService;
 
     @Scheduled(fixedRate = 20000)
     public void reportCurrentTime() {
@@ -26,7 +26,7 @@ public class ScheduledTasks {
         System.out.println(feed);
         for (FeedMessage message : feed.getMessages()) {
             System.out.println(message);
-            cityService.create(message);
+            newsService.create(message);
         }
 
     }
