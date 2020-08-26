@@ -18,7 +18,7 @@ public class ScheduledTasks {
     @Autowired
     private NewsService newsService;
 
-    @Scheduled(fixedRate = 20000)
+    @Scheduled(fixedRateString = "${rss.read.interval.millisecond}")
     public void reportCurrentTime() {
         log.info("The time is no {}", dateFormat.format(new Date()));
         RSSFeedParser parser = new RSSFeedParser("http://feeds.nos.nl/nosjournaal?format=xml");
