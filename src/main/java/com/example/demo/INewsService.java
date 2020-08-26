@@ -2,7 +2,7 @@ package com.example.demo;
 
 import java.util.List;
 
-public interface ICityService {
+public interface INewsService {
     List<FeedMessage> findAll();
     FeedMessage create(FeedMessage feedMessage);
 }

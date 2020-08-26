@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class NewsService implements ICityService {
+public class NewsService implements INewsService {
     @Autowired
     private JdbcTemplate jtm;
 
