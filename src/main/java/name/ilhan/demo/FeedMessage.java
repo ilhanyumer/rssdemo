@@ -15,7 +15,7 @@ public class FeedMessage {
     @Column(name = "pub_date")
     String pubDate;
     String link;
-    String author;
+
     @Id
     String guid;
 
@@ -43,14 +43,6 @@ public class FeedMessage {
         this.link = link;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public String getGuid() {
         return guid;
     }
@@ -74,7 +66,6 @@ public class FeedMessage {
                 ", description='" + description + '\'' +
                 ", pubDate='" + pubDate + '\'' +
                 ", link='" + link + '\'' +
-                ", author='" + author + '\'' +
                 ", guid='" + guid + '\'' +
                 '}';
     }

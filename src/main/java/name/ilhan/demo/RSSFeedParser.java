@@ -19,7 +19,6 @@ public class RSSFeedParser {
     static final String LANGUAGE = "language";
     static final String COPYRIGHT = "copyright";
     static final String LINK = "link";
-    static final String AUTHOR = "author";
     static final String ITEM = "item";
     static final String PUB_DATE = "pubDate";
     static final String GUID = "guid";
@@ -44,7 +43,6 @@ public class RSSFeedParser {
             String link = "";
             String language = "";
             String copyright = "";
-            String author = "";
             String pubDate = "";
             String guid = "";
 
@@ -83,9 +81,6 @@ public class RSSFeedParser {
                         case LANGUAGE:
                             language = getCharacterData(event, eventReader);
                             break;
-                        case AUTHOR:
-                            author = getCharacterData(event, eventReader);
-                            break;
                         case PUB_DATE:
                             pubDate = getCharacterData(event, eventReader);
                             break;
@@ -96,7 +91,6 @@ public class RSSFeedParser {
                 } else if (event.isEndElement()) {
                     if (event.asEndElement().getName().getLocalPart() == (ITEM)) {
                         FeedMessage message = new FeedMessage();
-                        message.setAuthor(author);
                         message.setDescription(description);
                         message.setGuid(guid);
                         message.setLink(link);
