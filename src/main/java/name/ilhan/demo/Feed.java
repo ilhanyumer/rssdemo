@@ -58,9 +58,15 @@ public class Feed {
 
     @Override
     public String toString() {
-        return "Feed [copyright=" + copyright + ", description=" + description
-                + ", language=" + language + ", link=" + link + ", pubDate="
-                + pubDate + ", title=" + title + "]";
+        return "Feed{" +
+                "title='" + title + '\'' +
+                ", link='" + link + '\'' +
+                ", description='" + description + '\'' +
+                ", language='" + language + '\'' +
+                ", copyright='" + copyright + '\'' +
+                ", pubDate='" + pubDate + '\'' +
+                ", guid='" + guid + '\'' +
+                ", entries=" + entries +
+                '}';
     }
-
 }
