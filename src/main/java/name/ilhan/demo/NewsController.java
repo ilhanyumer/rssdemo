@@ -13,7 +13,7 @@ public class NewsController {
     private NewsService newsService;
 
     @RequestMapping("/news")
-    public List<FeedMessage> findCities() {
+    public List<FeedMessage> findNews() {
 
         return newsService.findAll();
     }
