@@ -21,7 +21,7 @@ public class ScheduledTasks {
     @Scheduled(fixedRateString = "${rss.read.interval.milliseconds}")
     public void reportCurrentTime() {
         log.info("The time is no {}", dateFormat.format(new Date()));
-        RSSFeedParser parser = new RSSFeedParser("http://feeds.nos.nl/nosjournaal?format=xml");
+        RSSFeedParser parser = new RSSFeedParser("https://feeds.nos.nl/jeugdjournaal");
         Feed feed = parser.readFeed();
         System.out.println(feed);
         for (FeedMessage message : feed.getMessages()) {

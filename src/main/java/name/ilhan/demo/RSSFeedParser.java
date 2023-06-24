@@ -3,12 +3,14 @@ package name.ilhan.demo;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.Characters;
 import javax.xml.stream.events.XMLEvent;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Iterator;
 
 import static javax.xml.stream.XMLInputFactory.IS_COALESCING;
 
@@ -19,6 +21,7 @@ public class RSSFeedParser {
     static final String LANGUAGE = "language";
     static final String COPYRIGHT = "copyright";
     static final String LINK = "link";
+    static final String ENCLOSURE = "enclosure";
     static final String ITEM = "item";
     static final String PUB_DATE = "pubDate";
     static final String GUID = "guid";
@@ -43,6 +46,7 @@ public class RSSFeedParser {
             String link = "";
             String language = "";
             String copyright = "";
+            String enclosure = "";
             String pubDate = "";
             String guid = "";
 
@@ -81,6 +85,9 @@ public class RSSFeedParser {
                         case LANGUAGE:
                             language = getCharacterData(event, eventReader);
                             break;
+                        case ENCLOSURE:
+                            enclosure = getEnclosure(event, eventReader);
+                            break;
                         case PUB_DATE:
                             pubDate = getCharacterData(event, eventReader);
                             break;
@@ -91,6 +98,7 @@ public class RSSFeedParser {
                 } else if (event.isEndElement()) {
                     if (event.asEndElement().getName().getLocalPart().equals(ITEM)) {
                         FeedMessage message = new FeedMessage();
+                        message.setEnclosure(enclosure);
                         message.setDescription(description);
                         message.setGuid(guid);
                         message.setLink(link);
@@ -114,6 +122,18 @@ public class RSSFeedParser {
         event = eventReader.nextEvent();
         if (event instanceof Characters) {
             result = event.asCharacters().getData();
+        }
+        return result;
+    }
+
+    private String getEnclosure(XMLEvent event, XMLEventReader eventReader) {
+        String result = "";
+        Iterator<Attribute> attributes = event.asStartElement().getAttributes();
+        while (attributes.hasNext()) {
+            Attribute attribute = attributes.next();
+            if (attribute.getName().toString().equals("url")) {
+                result = attribute.getValue();
+            }
         }
         return result;
     }

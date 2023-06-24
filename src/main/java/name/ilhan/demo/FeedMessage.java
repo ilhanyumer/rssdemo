@@ -15,7 +15,7 @@ public class FeedMessage {
     @Column(name = "pub_date")
     String pubDate;
     String link;
-
+    String enclosure;
     @Id
     String guid;
 
@@ -43,6 +43,14 @@ public class FeedMessage {
         this.link = link;
     }
 
+    public String getEnclosure() {
+        return enclosure;
+    }
+
+    public void setEnclosure(String enclosure) {
+        this.enclosure = enclosure;
+    }
+
     public String getGuid() {
         return guid;
     }
@@ -66,6 +74,7 @@ public class FeedMessage {
                 ", description='" + description + '\'' +
                 ", pubDate='" + pubDate + '\'' +
                 ", link='" + link + '\'' +
+                ", enclosure='" + enclosure + '\'' +
                 ", guid='" + guid + '\'' +
                 '}';
     }
